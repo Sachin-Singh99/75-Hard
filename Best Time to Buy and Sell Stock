@@ -22,14 +22,13 @@ public:
 
 class Solution {
 public:
-    int maxProfit(vector<int>& prices) {
-        int mx = 0;
-        int mn = INT_MAX;
+    int maxProfit(vector<int>& prices){
+        int mn=prices[0],mx=0;
         int n = prices.size();
-        for(int i = 0; i < n; i++){
-            mn = min(mn, prices[i]);
-            mx = max(mx, prices[i] - mn);
+        for(int i=1;i<n;i++){
+            mn=min(mn,prices[i]);
+            mx=max(mx,prices[i]-mn);
         }
-        return mx; 
+        return mx;
     }
 };
