@@ -1,0 +1,26 @@
+// Brute Force Approach
+
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        for(int i=0;i<nums.size();i++){
+            nums[i]=nums[i]*nums[i];
+        }
+        sort(nums.begin(),nums.end());
+        return nums;
+    }
+};
+
+// Optimal Approach
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int i = 0, j = nums.size() - 1, k = j;
+        vector <int> v(k + 1, 0);
+        while (k >= 0) {
+            if (abs(nums[i]) > abs(nums[j])) v[k--] = nums[i] * nums[i++];
+            else v[k--] = nums[j] * nums[j--];
+        }
+        return v;
+    }
+};
